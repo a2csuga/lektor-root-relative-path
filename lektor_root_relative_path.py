@@ -13,15 +13,18 @@ class RootRelativePathPlugin(Plugin):
 
     def on_setup_env(self, **extra):
         navi_top_page_name = self.get_config().get('navi_top_page_name') or 'Top Page'
-        def root_relative_path_list(url):
-            # If current page is root, returns []
-            if url == '/':
-                return []
-            lis = furl(url).path.segments
+        def root_relative_path_list(current_url):
             url = '/'
             name = navi_top_page_name
             path_list = [(url, name)]
-            for i in lis:
+
+            # furl('/blog').path.segments retunrs ['/blog']
+            # But furl('/').path.segments retunrs ['']
+            # insted []. So return value here before in to the loop
+            if current_url == '/':
+                return path_list
+
+            for i in furl(current_url).path.segments:
                 url = urllib.quote(urljoin(url, '%s' % i))
                 name = i
                 path_list.append((url, name))
