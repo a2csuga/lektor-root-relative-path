@@ -19,7 +19,7 @@ See [the Lektor documentation for more instructions on installing plugins](https
 
 Set these option in `configs/root-relative-path.ini`:
 
-### `navi_top_page_name`
+### navi_top_page_name
 
 Optional. Name of top page inidicated in the navication. Default is 'Top Page'
 
