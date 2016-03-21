@@ -24,7 +24,7 @@ Set these option in `configs/root-relative-path.ini`:
 Optional. Name of top page inidicated in the navication. Default is 'Top Page'
 
 ```
-navi_top_page_name = 'Root'
+navi_top_page_name = 'Top Page'
 ```
 
 ## How to use
