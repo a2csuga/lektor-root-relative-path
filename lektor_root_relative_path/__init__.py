@@ -1,6 +1,12 @@
 # -*- coding: utf-8 -*-
-from urlparse import urljoin
-import urllib
+
+try:
+    # py3
+    from urllib.parse import urljoin, quote
+except ImportError:
+    # py2
+    from urlparse import urljoin
+    from urllib import quote
 
 from lektor.pluginsystem import Plugin
 from furl import furl
@@ -25,7 +31,7 @@ class RootRelativePathPlugin(Plugin):
                 return path_list
 
             for i in furl(current_url).path.segments:
-                url = urllib.quote(urljoin(url, '%s' % i))
+                url = quote(urljoin(url, '%s' % i))
                 name = i
                 path_list.append((url, name))
                 url = url + '/'
