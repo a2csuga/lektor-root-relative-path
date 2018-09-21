@@ -7,6 +7,7 @@ setup(
     version='0.1',
     url='http://github.com/a2csuga/lektor-root-relative-path',
     license='MIT',
+    install_requires=open('requirements.txt').read(),
     packages=['lektor_root_relative_path'],
     description='Root relative path plugin for Lektor',
     entry_points={
